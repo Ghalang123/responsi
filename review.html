@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Review Form</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+        color: #333;
+      }
+
+      header {
+        background-color: #ff6f61;
+        color: white;
+        padding: 1rem 2rem;
+        text-align: center;
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: 2.5rem;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      label {
+        margin: 0.5rem 0 0.2rem;
+        font-weight: bold;
+      }
+
+      input,
+      textarea,
+      select,
+      button {
+        padding: 0.8rem;
+        margin-bottom: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 1rem;
+      }
+
+      button {
+        background-color: #ff6f61;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      button:hover {
+        background-color: #e65a50;
+      }
+
+      footer {
+        text-align: center;
+        padding: 1rem 0;
+        background-color: #333;
+        color: white;
+      }
+
+      footer p {
+        margin: 0;
+      }
+
+      /* Navbar Style */
+      nav {
+        background-color: #333;
+        padding: 1rem;
+        text-align: center;
+      }
+
+      nav a {
+        color: white;
+        margin: 0 15px;
+        text-decoration: none;
+        font-size: 1.2rem;
+      }
+
+      nav a:hover {
+        color: #ff6f61;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav aria-label="Main Navigation">
+      <a href="index.html">Back to Home</a>
+    </nav>
+
+    <header>
+      <h1>Review Form</h1>
+    </header>
+
+    <div class="container">
+      <form name="pendaftaran">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your Name" required />
+
+        <label for="review">Review</label>
+        <textarea id="review" name="review" rows="4" placeholder="Write your review here..." required></textarea>
+
+        <button type="submit">Submit Review</button>
+      </form>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 Food Review. All rights reserved.</p>
+    </footer>
+
+    <script>
+      const scriptURL = "https://script.google.com/macros/s/AKfycbzrlOUZ6JHPJjZ5dWvN6782_2QGxp470kDDMRrHymU0YYNfE5vALnt148TLpFZQHaVu/exec"; // Ganti YOUR_SCRIPT_ID dengan ID script Anda
+      const form = document.forms["pendaftaran"];
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) => console.log("Success!", response))
+          .catch((error) => console.error("Error!", error.message));
+      });
+    </script>
+  </body>
+</html>
